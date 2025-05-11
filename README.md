@@ -20,9 +20,8 @@ yc managed-kubernetes cluster get-credentials --id идентификатор_к
 kubectl create namespace test
 helm repo add sentry https://sentry-kubernetes.github.io/charts
 helm repo update
-helm upgrade --install sentry -n test sentry/sentry --version 26.15.1 -f values_sentry.yaml
+helm upgrade --install sentry -n test sentry/sentry --version 26.17.0 -f values_sentry.yaml
 ```
-В версии `26.15.1` sentry helm чарта используется `25.2.0` версия sentry
 
 ## Пароли
 Пароли генерируются динамически, но вы можете указать свои пароль в local.tf
