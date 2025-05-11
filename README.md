@@ -27,6 +27,19 @@ helm upgrade --install sentry -n test sentry/sentry --version 26.17.0 --wait --t
 Пароли генерируются динамически, но вы можете указать свои пароль в local.tf
 Их можно получить посмотрев values_sentry.yaml или используя terraform output
 
+## Установка victoria-metrics-k8s-stack
+
+Добавим Helm репозиторий и установим VictoriaMetrics stack:
+
+```bash
+helm repo add vm https://victoriametrics.github.io/helm-charts/
+helm repo update
+
+helm upgrade --install vmks vm/victoria-metrics-k8s-stack \
+  --namespace vmks --create-namespace \
+  --values vmks-values.yaml
+```
+
 ## Простой пример отправки exception
 - Создаем проект в Sentry, выбираем python, копируем DSN
 - Заходим в директорию `example-python`
